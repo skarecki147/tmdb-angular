@@ -1,1 +1,6 @@
-<p>movie-details works!</p>
+<main *ngIf="movieDetails$ | async as details" class="movie-detail">
+  <header>
+      <h2>{{details.title}}</h2>
+    <button routerLink="..">BACK</button>
+  </header>
+</main>
