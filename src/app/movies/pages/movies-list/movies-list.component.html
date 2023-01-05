@@ -9,6 +9,12 @@
   </div>
 
   <div class="movies-list">
-    <app-movie-card *ngFor="let movie of movies$ | async" [movie]="movie" [routerLink]="movie.id+''"></app-movie-card>
+    <ng-container *ngIf="genreNames$ | async as genreNames">
+      <app-movie-card *ngFor="let movie of movies$ | async"
+                      [genreNames]="genreNames"
+                      [movie]="movie"
+                      [routerLink]="movie.id+''">
+      </app-movie-card>
+    </ng-container>
   </div>
 </div>

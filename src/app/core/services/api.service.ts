@@ -3,8 +3,9 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import { environment } from "../../../environment";
 import { UrlUtils } from "../../shared/utils/url-utils";
 import { MoviesListModel } from "../../movies/models/movies-list.model";
-import { Observable } from "rxjs";
+import { map, Observable } from "rxjs";
 import { MovieDetailsModel } from "../../movies/models/movie-details.model";
+import { GenreModel } from "../../shared/models/genre.model";
 
 @Injectable()
 export class ApiService {
@@ -33,5 +34,15 @@ export class ApiService {
       {
         params: this._httpParams
       })
+  }
+
+  getGenreList(): Observable<Array<GenreModel>> {
+    return this._http.get<{ genres: Array<GenreModel> }>(
+      `${this._baseUrl}/genre/movie/list`,
+      {
+        params: this._httpParams
+      }).pipe(
+      map(res => res.genres)
+    )
   }
 }

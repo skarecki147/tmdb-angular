@@ -6,6 +6,8 @@ import { MatSelectChange } from "@angular/material/select";
 import { SORT_OPTIONS } from "../../../shared/utils/sort-options";
 import { MoviesActions } from "../../store/movies.actions";
 import { selectSortedMovies } from "../../store/movies.selectors";
+import { selectGenres } from "../../../store/app.reducer";
+import { GenreNamesType } from "../../../shared/models/genre.model";
 
 @Component({
   selector: 'app-movies-list',
@@ -15,6 +17,7 @@ import { selectSortedMovies } from "../../store/movies.selectors";
 })
 export class MoviesListComponent {
   movies$: Observable<Array<MovieModel>> = this._store.select(selectSortedMovies)
+  genreNames$: Observable<GenreNamesType> = this._store.select(selectGenres)
 
   sortOptions = SORT_OPTIONS
 
@@ -23,7 +26,6 @@ export class MoviesListComponent {
 
   sortOptionChange({value}: MatSelectChange) {
     const compareFn = this.sortOptions.find(option => option.value == value)!.compareFn
-    console.log('DISPATCH')
     this._store.dispatch(MoviesActions.changeSortOption({compareFn}))
   }
 }
