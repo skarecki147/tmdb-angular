@@ -1,0 +1,11 @@
+<mat-card class="movie-card" matRipple>
+  <mat-card-header>
+    <mat-card-title>{{movie.title}}</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-footer>
+    <div class="chips">
+      <mat-chip disableRipple *ngFor="let genreId of movie.genre_ids">{{genreNames[genreId]}}</mat-chip>
+    </div>
+  </mat-card-footer>
+</mat-card>
