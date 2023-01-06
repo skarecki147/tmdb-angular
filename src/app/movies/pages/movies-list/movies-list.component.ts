@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {MovieModel} from "../../models/movie.model";
@@ -25,8 +25,7 @@ export class MoviesListComponent {
   sortDefaultOption: string | number
 
   constructor(private _store: Store) {
-    this.sortDefaultOption = SORT_DEFAULT_OPTION
-    StorageUtils.setKey(StorageKeys.SORT_OPTION, this.sortDefaultOption);
+    this.sortDefaultOption = StorageUtils.getKey(StorageKeys.SORT_OPTION);
   }
 
   sortOptionChange({value}: MatSelectChange) {
