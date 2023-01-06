@@ -1,0 +1,154 @@
+@import "src/assets/styles/mixins";
+@import "src/assets/styles/variables";
+@import "src/assets/styles/mixins";
+
+main.movie-detail {
+
+  .container {
+    margin: 0 auto;
+    max-width: 1100px;
+  }
+
+  section {
+    background: $black;
+
+    &:last-of-type {
+      background: white;
+      padding: 30px 0;
+    }
+
+    header {
+      position: relative;
+
+      &:before {
+        @include p-absolute;
+        background: linear-gradient(
+            90deg,
+            rgba($black, 1),
+            rgba($black, 0.7),
+            rgba($black, 0),
+            rgba($black, 1)
+        );
+        content: "";
+        display: none;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      .header-info {
+        padding: 1rem;
+
+        mat-card {
+          background: transparent;
+          box-shadow: none;
+
+          [mat-card-avatar] {
+            @include flex();
+            color: black;
+            font-weight: bold;
+          }
+        }
+      }
+
+      @media(min-width: $md-breakpoint) {
+        &:before {
+          display: block;
+        }
+
+        .header-info {
+          bottom: 0;
+          position: absolute;
+        }
+
+      }
+    }
+
+    .movie-basic-info {
+      @include flex();
+      color: $black;
+      gap: 20px;
+      padding: 20px 10px;
+
+      img {
+        display: none;
+        max-width: 250px;
+
+        @media(min-width: $xs-breakpoint) {
+          display: block;
+        }
+      }
+
+      .overview {
+        text-align: justify;
+      }
+
+      .movie-params-map {
+        @include flex();
+        border-top: dotted 1px #666;
+        //display: flex;
+        flex-wrap: wrap;
+        //justify-content: center;
+        gap: 20px;
+        padding: 20px 0;
+
+        div {
+          @include flex();
+          //flex: 1;
+          gap: 5px;
+          min-width: 120px;
+
+          span {
+            &:first-child {
+              color: #666666;
+              font-size: 0.8rem;
+            }
+
+            &:last-child {
+              font-weight: bold;
+            }
+          }
+
+          a {
+            color: $black;
+            cursor: pointer;
+            text-decoration: none;
+          }
+        }
+
+        @media(min-width: $md-breakpoint) {
+          justify-content: flex-start;
+
+          div {
+            flex-direction: row;
+
+          }
+        }
+      }
+
+    }
+
+    .producers {
+      color: $black;
+      text-align: center;
+
+      .production-companies {
+        @include flex(row, flex-end, space-between);
+        flex-wrap: wrap;
+        gap: 40px;
+
+        .production-company {
+          @include flex(column, center, space-beetwen);
+          flex: 1;
+          gap: 10px;
+          min-width: 200px;
+
+          img {
+            max-width: 50%;
+          }
+        }
+      }
+    }
+  }
+}

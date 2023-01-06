@@ -1,0 +1,15 @@
+@import "src/assets/styles/mixins";
+
+#movies-list-container {
+  .sort-header {
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .movies-list {
+    @include flex();
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 2rem 1rem;
+  }
+}

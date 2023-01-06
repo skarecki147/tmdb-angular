@@ -1,0 +1,33 @@
+<mat-card class="movie-card" matRipple>
+  <img mat-card-image [src]="posterImg" alt="Photo of movie poster">
+
+  <mat-card-header>
+    <div mat-card-avatar [style.background-color]="voteColor">{{movie.vote_average | number: '1.1-1'}}</div>
+    <mat-card-title [attr.aria-label]="'Title: ' + movie.title + '. Score: ' + movie.vote_average" tabindex="0">
+      {{movie.title}}</mat-card-title>
+    <mat-card-subtitle>
+      <mat-icon *ngIf="movie.adult">18_up_rating</mat-icon>
+      <span tabindex="0">
+        Release date: {{movie.release_date | date }}
+      </span>
+      <span tabindex="0">
+        Original language: ({{movie.original_language}})
+      </span>
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <a type="button"  tabindex="0" [routerLink]="movie.id + ''" color="primary" mat-flat-button>Show details</a>
+    <p [attr.aria-label]="'Description: '+movie.overview" tabindex="0">
+      {{movie.overview}}
+    </p>
+  </mat-card-content>
+
+  <mat-card-footer>
+    <div class="chips" tabindex="0" aria-label="Movie genres: ">
+      <mat-chip *ngFor="let genreId of movie.genre_ids; last as last" disableRipple><span
+        [attr.aria-label]="last ? 'Last of genres: ' +  genreNames[genreId]: null" tabindex="0">
+        {{genreNames[genreId]}}</span></mat-chip>
+    </div>
+  </mat-card-footer>
+</mat-card>

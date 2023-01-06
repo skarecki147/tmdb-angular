@@ -1,0 +1,93 @@
+<main *ngIf="movieDetails$ | async as details" class="movie-detail">
+  <section>
+    <header class="container">
+      <img [src]="getImageUrl(details.backdrop_path)" alt="Movie backdrop image.">
+
+      <div class="header-info">
+        <span [attr.aria-label]="'Release date: ' + details.release_date" tabindex="0">{{details.release_date}}</span>
+        <h2 [attr.aria-label]="'Title: ' + details.title" tabindex="0">{{details.title}}</h2>
+        <h4
+          [attr.aria-label]="
+          'Tagline: ' + details.tagline +
+          '. Runtime: ' + details.runtime + ' minutes.'
+"
+          tabindex="0">
+          {{details.tagline}}
+          <span>{{details.runtime | minToHours}}</span>
+        </h4>
+
+        <mat-card>
+          <mat-card-header>
+            <div [attr.aria-label]="'Score: ' + details.vote_average"
+                 [style.background-color]="getVoteColor(details.vote_average)"
+                 mat-card-avatar
+                 tabindex="0">{{details.vote_average | number: '1.2-2'}}</div>
+            <mat-card-title [attr.aria-label]="'Amount of votes: ' + details.vote_count"
+                            tabindex="0">{{details.vote_count}}</mat-card-title>
+            <mat-card-subtitle>votes</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+      </div>
+    </header>
+  </section>
+
+  <section>
+    <div class="movie-basic-info container">
+      <img tabindex="0" *ngIf="details.poster_path" [src]="getImageUrl(details.poster_path)" [alt]="details.title + ' poster image.'">
+
+      <div>
+        <span [attr.aria-label]="'Overview: ' + details.overview" class="overview" tabindex="0">
+            {{details.overview}}
+        </span>
+
+        <div aria-label="Details:" class="movie-params-map" tabindex="0">
+          <div [attr.aria-label]="'Original title: ' + details.original_title" tabindex="0">
+            <span>Original title:</span>
+            <span>{{details.original_title}}</span>
+          </div>
+          <div [attr.aria-label]="'For adults: ' + details.adult" tabindex="0">
+            <span>18+:</span>
+            <span>{{details.adult ? "yes" : "no"}}</span>
+          </div>
+          <div [attr.aria-label]="'Status: ' + details.status" tabindex="0">
+            <span>Status:</span>
+            <span>{{details.status}}</span>
+          </div>
+          <div [attr.aria-label]="'Budget: ' + details.budget + ' USD'" tabindex="0">
+            <span>Budget:</span>
+            <span>{{details.budget | currency: 'USD': 'symbol-narrow': '1.0-0'}}</span>
+          </div>
+          <div [attr.aria-label]="'Revenue: ' + details.revenue + ' USD'" tabindex="0">
+            <span>Revenue:</span>
+            <span>{{details.revenue | currency: 'USD': 'symbol-narrow': '1.0-0'}}</span>
+          </div>
+          <div [attr.aria-label]="'Original language: ' + details.original_language" tabindex="0">
+            <span>Original language:</span>
+            <span>{{details.original_language}}</span>
+          </div>
+          <div>
+            <span>Movie homepage:</span>
+            <a [href]="details.homepage" aria-label="Link to movie homepage" tabindex="0"
+               target="_blank">{{details.homepage}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="producers container">
+      <h2 tabindex="0">Produced by:</h2>
+      <div class="production-companies">
+        <div *ngFor="let productionCompany of details.production_companies; last as last" aria-label="Producers list:"
+             class="production-company">
+          <img *ngIf="productionCompany.logo_path" [alt]="productionCompany.name + ' logo'"
+               [src]="getImageUrl(productionCompany.logo_path!)"
+               tabindex="0">
+          <span
+            [attr.aria-label]="last ? 'Last of producers: ' + productionCompany.name + 'from ' + productionCompany.origin_country :
+          productionCompany.name + 'from ' + productionCompany.origin_country"
+            tabindex="0">{{productionCompany.name}} [{{productionCompany.origin_country}}]</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
