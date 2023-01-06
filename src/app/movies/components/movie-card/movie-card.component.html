@@ -1,11 +1,30 @@
 <mat-card class="movie-card" matRipple>
+  <img mat-card-image [src]="posterImg" alt="Photo of movie poster">
+
   <mat-card-header>
+    <div mat-card-avatar [style.background-color]="voteColor">{{movie.vote_average | number: '1.1-1'}}</div>
     <mat-card-title>{{movie.title}}</mat-card-title>
+    <mat-card-subtitle>
+      <mat-icon *ngIf="movie.adult">18_up_rating</mat-icon>
+      <span>
+        Release date: {{movie.release_date | date }}
+      </span>
+      <span>
+        Original language: ({{movie.original_language}})
+      </span>
+    </mat-card-subtitle>
   </mat-card-header>
+
+  <mat-card-content>
+    <button [routerLink]="movie.id + ''" color="primary" mat-flat-button>Show details</button>
+    <p>
+      {{movie.overview}}
+    </p>
+  </mat-card-content>
 
   <mat-card-footer>
     <div class="chips">
-      <mat-chip disableRipple *ngFor="let genreId of movie.genre_ids">{{genreNames[genreId]}}</mat-chip>
+      <mat-chip *ngFor="let genreId of movie.genre_ids" disableRipple>{{genreNames[genreId]}}</mat-chip>
     </div>
   </mat-card-footer>
 </mat-card>

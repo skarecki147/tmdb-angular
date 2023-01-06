@@ -12,8 +12,7 @@
     <ng-container *ngIf="genreNames$ | async as genreNames">
       <app-movie-card *ngFor="let movie of movies$ | async"
                       [genreNames]="genreNames"
-                      [movie]="movie"
-                      [routerLink]="movie.id+''">
+                      [movie]="movie">
       </app-movie-card>
     </ng-container>
   </div>
