@@ -1,5 +1,16 @@
+@import "src/assets/styles/mixins";
+
 mat-toolbar {
-  background: #000;
+  background: linear-gradient(90deg, rgba(0,0,0,0.7), rgba(194,24,91,0.5), rgba(0,0,0,0.7));
+
+  .header {
+    @include flex(row, center ,space-between);
+    width: 100%;
+
+    img{
+      max-width: 3rem;
+    }
+  }
 
   h1 {
     margin: 2rem 1rem;
