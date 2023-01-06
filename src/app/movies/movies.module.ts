@@ -11,7 +11,6 @@ import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 import { moviesFeature } from "./store/movies.reducer";
 import { MoviesEffects } from "./store/movies.effects";
-import { MinToHoursPipe } from "../shared/pipes/min-to-hours.pipe";
 
 
 @NgModule({
@@ -28,7 +27,6 @@ import { MinToHoursPipe } from "../shared/pipes/min-to-hours.pipe";
     MaterialModule,
     StoreModule.forFeature(moviesFeature),
     EffectsModule.forFeature([MoviesEffects]),
-    MinToHoursPipe,
   ]
 })
 export default class MoviesModule {
