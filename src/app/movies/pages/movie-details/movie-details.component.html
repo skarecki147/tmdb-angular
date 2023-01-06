@@ -3,14 +3,15 @@
     <header class="container">
       <img [src]="getImageUrl(details.backdrop_path)" alt="Movie backdrop image.">
 
+      <a class="back-button" color="primary" mat-raised-button routerLink=".." tabindex="0">Back to list</a>
+
       <div class="header-info">
-        <span [attr.aria-label]="'Release date: ' + details.release_date" tabindex="0">{{details.release_date}}</span>
+        <h5 [attr.aria-label]="'Release date: ' + details.release_date" tabindex="0">{{details.release_date}}</h5>
         <h2 [attr.aria-label]="'Title: ' + details.title" tabindex="0">{{details.title}}</h2>
         <h4
           [attr.aria-label]="
           'Tagline: ' + details.tagline +
-          '. Runtime: ' + details.runtime + ' minutes.'
-"
+          '. Runtime: ' + details.runtime + ' minutes.'"
           tabindex="0">
           {{details.tagline}}
           <span>{{details.runtime | minToHours}}</span>

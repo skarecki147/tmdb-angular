@@ -40,7 +40,7 @@
 
   mat-card-footer {
     bottom: 0;
-    overflow: scroll;
+    overflow-x: auto;
     padding: 1em;
     position: absolute;
     width: 100%;
@@ -58,7 +58,7 @@
 
     mat-card-content {
       max-height: 70%;
-      overflow: scroll;
+      overflow-y: auto;
       transform: translateY(0);
     }
   }
