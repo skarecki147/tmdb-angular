@@ -2,7 +2,7 @@ import { createFeature, createReducer, on } from '@ngrx/store';
 import { MoviesActions, MoviesApiActions } from "./movies.actions";
 import { MovieModel } from "../models/movie.model";
 import { MovieDetailsModel } from "../models/movie-details.model";
-import { SORT_OPTIONS } from "../../shared/utils/sort-options";
+import { SORT_DEFAULT_OPTION, SORT_OPTIONS } from "../../shared/utils/sort-options";
 
 export const moviesFeatureKey = 'movies';
 
@@ -18,7 +18,7 @@ export interface MoviesState {
 const initialState: MoviesState = {
   loading: false,
   movies: [],
-  moviesSortFn: SORT_OPTIONS[0].compareFn,
+  moviesSortFn: SORT_OPTIONS.find(opt => opt.value === SORT_DEFAULT_OPTION)?.compareFn ?? SORT_OPTIONS[0].compareFn,
   moviesDetails: {},
 };
 

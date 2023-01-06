@@ -1,4 +1,5 @@
 import { SortOptionModel } from "../../movies/models/sort-option.model";
+import { StorageKeys, StorageUtils } from "./storage-utils";
 
 export const SORT_OPTIONS: SortOptionModel[] = [
   {
@@ -27,3 +28,6 @@ export const SORT_OPTIONS: SortOptionModel[] = [
     compareFn: (a, b) => (new Date(b.release_date)).getTime() - (new Date(a.release_date)).getTime()
   }
 ]
+
+
+export const SORT_DEFAULT_OPTION: string | number = StorageUtils.getKey(StorageKeys.SORT_OPTION) ?? SORT_OPTIONS[0].value

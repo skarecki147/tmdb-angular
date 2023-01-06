@@ -36,6 +36,14 @@ export class ApiService {
       })
   }
 
+  getSimilarMovies(id: number): Observable<MoviesListModel> {
+    return this._http.get<MoviesListModel>(
+      `${this._baseUrl}/movie/${id}/recommendations`,
+      {
+        params: this._httpParams
+      })
+  }
+
   getGenreList(): Observable<Array<GenreModel>> {
     return this._http.get<{ genres: Array<GenreModel> }>(
       `${this._baseUrl}/genre/movie/list`,
