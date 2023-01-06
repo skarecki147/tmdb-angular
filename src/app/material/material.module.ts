@@ -7,6 +7,7 @@ import { MatCardModule } from "@angular/material/card";
 import { MatSelectModule } from "@angular/material/select";
 import { MatChipsModule } from "@angular/material/chips";
 import { MatIconModule } from "@angular/material/icon";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 const importExportList = [
   MatButtonModule,
@@ -15,7 +16,8 @@ const importExportList = [
   MatCardModule,
   MatSelectModule,
   MatChipsModule,
-  MatIconModule
+  MatIconModule,
+  MatSnackBarModule
 ]
 
 @NgModule({

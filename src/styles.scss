@@ -13,6 +13,18 @@ body {
   margin: 0;
 }
 
-mat-label{
+mat-label {
   color: white;
+}
+
+.error-snackbar {
+  background: indianred;
+
+  & > div.mdc-snackbar__surface {
+    background: indianred;
+  }
+
+  .mdc-snackbar__label[matsnackbarlabel] {
+    color: white;
+  }
 }

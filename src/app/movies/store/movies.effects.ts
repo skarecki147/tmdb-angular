@@ -5,6 +5,7 @@ import { MoviesApiActions } from "./movies.actions";
 import { catchError, map, mergeMap, of, switchMap, tap } from "rxjs";
 import { Store } from "@ngrx/store";
 import { selectRouteParams } from "../../store/router.selectors";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 
 @Injectable()
@@ -28,9 +29,16 @@ export class MoviesEffects {
 
   moviesFailure$ = createEffect(() => this._actions$.pipe(
     ofType(MoviesApiActions.fetchMoviesFailure, MoviesApiActions.fetchMovieDetailsFailure),
-    tap((err) => console.log('error', err))
+    tap(() => this._snackBar.open(
+      'Something gone wrong :(', 'OK', {
+        panelClass: 'error-snackbar'
+      }))
   ), {dispatch: false});
 
-  constructor(private _actions$: Actions, private _api: ApiService, private _store: Store) {
+  constructor(private _actions$: Actions,
+              private _api: ApiService,
+              private _store: Store,
+              private _snackBar: MatSnackBar
+  ) {
   }
 }

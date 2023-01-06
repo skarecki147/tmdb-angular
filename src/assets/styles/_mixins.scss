@@ -4,3 +4,11 @@
   align-items: $align;
   justify-content: $justify;
 }
+
+@mixin p-absolute() {
+  bottom: 0;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  width: 100%;
+}

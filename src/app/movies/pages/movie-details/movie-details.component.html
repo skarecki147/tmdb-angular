@@ -1,6 +1,79 @@
 <main *ngIf="movieDetails$ | async as details" class="movie-detail">
-  <header>
-      <h2>{{details.title}}</h2>
-    <button routerLink="..">BACK</button>
-  </header>
+  <section>
+    <header class="container">
+      <img [src]="getImageUrl(details.backdrop_path)">
+
+      <div class="header-info">
+        <span>{{details.release_date}}</span>
+        <h2>{{details.title}}</h2>
+        <h4>
+          {{details.tagline}}
+          <span>{{details.runtime | minToHours}}</span>
+        </h4>
+
+        <mat-card>
+          <mat-card-header>
+            <div [style.background-color]="getVoteColor(details.vote_average)"
+                 mat-card-avatar>{{details.vote_average | number: '1.2-2'}}</div>
+            <mat-card-title>{{details.vote_count}}</mat-card-title>
+            <mat-card-subtitle>votes</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+      </div>
+    </header>
+  </section>
+
+  <section>
+    <div class="movie-basic-info container">
+      <img *ngIf="details.poster_path" [src]="getImageUrl(details.poster_path)">
+
+      <div>
+        <span class="overview">
+            {{details.overview}}
+        </span>
+
+        <div class="movie-params-map">
+          <div>
+            <span>Original title:</span>
+            <span>{{details.original_title}}</span>
+          </div>
+          <div>
+            <span>18+:</span>
+            <span>{{details.adult ? "yes" : "no"}}</span>
+          </div>
+          <div>
+            <span>Status:</span>
+            <span>{{details.status}}</span>
+          </div>
+          <div>
+            <span>Budget:</span>
+            <span>{{details.budget | currency: 'USD': 'symbol-narrow': '1.0-0'}}</span>
+          </div>
+          <div>
+            <span>Revenue:</span>
+            <span>{{details.revenue | currency: 'USD': 'symbol-narrow': '1.0-0'}}</span>
+          </div>
+          <div>
+            <span>Original language:</span>
+            <span>{{details.original_language}}</span>
+          </div>
+          <div>
+            <span>Movie homepage:</span>
+            <a [href]="details.homepage" target="_blank">{{details.homepage}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="producers container">
+      <h2>Produced by:</h2>
+      <div class="production-companies">
+        <div *ngFor="let productionCompany of details.production_companies" class="production-company">
+          <img *ngIf="productionCompany.logo_path"
+               [src]="getImageUrl(productionCompany.logo_path!)">
+          <span>{{productionCompany.name}} [{{productionCompany.origin_country}}]</span>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
