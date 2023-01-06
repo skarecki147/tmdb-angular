@@ -11,7 +11,7 @@ export class MinToHoursPipe implements PipeTransform {
     const hours = Math.floor(value / 60)
     const minutes = Math.floor(value % 60)
 
-    return (value < 60 ? `${hours} hrs, ` : '') + `${minutes} min.`;
+    return (value < 60 ? '' : `${hours} hrs, `) + `${minutes} min.`;
   }
 
 }
