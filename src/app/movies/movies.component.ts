@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Store } from "@ngrx/store";
-import { MoviesApiActions } from "./store/movies.actions";
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {Store} from "@ngrx/store";
+import {MoviesApiActions} from "./store/movies.actions";
 
 @Component({
   selector: 'app-movies',

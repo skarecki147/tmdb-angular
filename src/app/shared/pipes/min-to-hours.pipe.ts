@@ -1,9 +1,7 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
-  name: 'minToHours',
-  standalone: true,
-  pure: true
+  name: 'minToHours', standalone: true, pure: true
 })
 export class MinToHoursPipe implements PipeTransform {
 
