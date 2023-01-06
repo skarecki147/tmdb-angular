@@ -1,20 +1,21 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Store } from "@ngrx/store";
-import { Observable } from "rxjs";
-import { MovieModel } from "../../models/movie.model";
-import { MatSelectChange } from "@angular/material/select";
-import { SORT_DEFAULT_OPTION, SORT_OPTIONS } from "../../../shared/utils/sort-options";
-import { MoviesActions } from "../../store/movies.actions";
-import { selectSortedMovies } from "../../store/movies.selectors";
-import { selectGenres } from "../../../store/app.reducer";
-import { GenreNamesType } from "../../../shared/models/genre.model";
-import { StorageKeys, StorageUtils } from "../../../shared/utils/storage-utils";
+import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
+import {Store} from "@ngrx/store";
+import {Observable} from "rxjs";
+import {MovieModel} from "../../models/movie.model";
+import {MatSelectChange} from "@angular/material/select";
+import {SORT_DEFAULT_OPTION, SORT_OPTIONS} from "../../../shared/utils/sort-options";
+import {MoviesActions} from "../../store/movies.actions";
+import {selectSortedMovies} from "../../store/movies.selectors";
+import {selectGenres} from "../../../store/app.reducer";
+import {GenreNamesType} from "../../../shared/models/genre.model";
+import {StorageKeys, StorageUtils} from "../../../shared/utils/storage-utils";
 
 @Component({
   selector: 'app-movies-list',
   templateUrl: './movies-list.component.html',
   styleUrls: ['./movies-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None
 })
 export class MoviesListComponent {
   movies$: Observable<Array<MovieModel>> = this._store.select(selectSortedMovies)

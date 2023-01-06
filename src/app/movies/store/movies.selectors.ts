@@ -1,6 +1,6 @@
-import { createSelector } from "@ngrx/store";
-import { selectMovies, selectMoviesDetails, selectMoviesSortFn } from "./movies.reducer";
-import { selectRouteParams } from "../../store/router.selectors";
+import {createSelector} from "@ngrx/store";
+import {selectMovies, selectMoviesDetails, selectMoviesSortFn} from "./movies.reducer";
+import {selectRouteParams} from "../../store/router.selectors";
 
 export const selectMovieDetails = createSelector(
   selectMoviesDetails,

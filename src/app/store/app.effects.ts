@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { ApiService } from "../core/services/api.service";
-import { AppActions } from "./app.actions";
-import { catchError, map, mergeMap, of } from "rxjs";
-import { MoviesApiActions } from "../movies/store/movies.actions";
+import {Injectable} from '@angular/core';
+import {Actions, createEffect, ofType} from '@ngrx/effects';
+import {ApiService} from "../core/services/api.service";
+import {AppActions} from "./app.actions";
+import {catchError, map, mergeMap, of} from "rxjs";
+import {MoviesApiActions} from "../movies/store/movies.actions";
 
 
 @Injectable()

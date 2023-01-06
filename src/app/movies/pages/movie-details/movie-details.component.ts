@@ -1,11 +1,11 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Observable } from "rxjs";
-import { MovieDetailsModel } from "../../models/movie-details.model";
-import { selectMovieDetails } from "../../store/movies.selectors";
-import { Store } from "@ngrx/store";
-import { MoviesApiActions } from "../../store/movies.actions";
-import { UrlUtils } from "../../../shared/utils/url-utils";
-import { Router } from "@angular/router";
+import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Observable} from "rxjs";
+import {MovieDetailsModel} from "../../models/movie-details.model";
+import {selectMovieDetails} from "../../store/movies.selectors";
+import {Store} from "@ngrx/store";
+import {MoviesApiActions} from "../../store/movies.actions";
+import {UrlUtils} from "../../../shared/utils/url-utils";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-movie-details',

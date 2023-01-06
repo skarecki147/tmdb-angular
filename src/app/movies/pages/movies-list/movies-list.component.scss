@@ -2,12 +2,15 @@
 
 #movies-list-container {
   .sort-header {
-    padding: 1rem;
-    text-align: center;
+    padding: 2rem 1rem;
+
+    mat-form-field {
+      margin-left: 1rem;
+    }
   }
 
   .movies-list {
-    @include flex();
+    @include flex(row, space-between, center);
     flex-wrap: wrap;
     gap: 20px;
     padding: 2rem 1rem;

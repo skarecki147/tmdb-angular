@@ -1,8 +1,8 @@
 <mat-card class="movie-card" matRipple>
-  <img mat-card-image [src]="posterImg" alt="Photo of movie poster">
+  <img [src]="posterImg" alt="Photo of movie poster" mat-card-image>
 
   <mat-card-header>
-    <div mat-card-avatar [style.background-color]="voteColor">{{movie.vote_average | number: '1.1-1'}}</div>
+    <div [style.background-color]="voteColor" mat-card-avatar>{{movie.vote_average | number: '1.1-1'}}</div>
     <mat-card-title [attr.aria-label]="'Title: ' + movie.title + '. Score: ' + movie.vote_average" tabindex="0">
       {{movie.title}}</mat-card-title>
     <mat-card-subtitle>
@@ -17,14 +17,14 @@
   </mat-card-header>
 
   <mat-card-content>
-    <a type="button"  tabindex="0" [routerLink]="movie.id + ''" color="primary" mat-flat-button>Show details</a>
+    <a [routerLink]="movie.id + ''" color="primary" mat-flat-button tabindex="0" type="button">Show details</a>
     <p [attr.aria-label]="'Description: '+movie.overview" tabindex="0">
       {{movie.overview}}
     </p>
   </mat-card-content>
 
   <mat-card-footer>
-    <div class="chips" tabindex="0" aria-label="Movie genres: ">
+    <div aria-label="Movie genres: " class="chips" tabindex="0">
       <mat-chip *ngFor="let genreId of movie.genre_ids; last as last" disableRipple><span
         [attr.aria-label]="last ? 'Last of genres: ' +  genreNames[genreId]: null" tabindex="0">
         {{genreNames[genreId]}}</span></mat-chip>

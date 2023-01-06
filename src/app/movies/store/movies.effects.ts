@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
-import { ApiService } from "../../core/services/api.service";
-import { MoviesApiActions } from "./movies.actions";
-import { catchError, concatMap, forkJoin, map, mergeMap, of, switchMap, tap } from "rxjs";
-import { Store } from "@ngrx/store";
-import { selectRouteParams } from "../../store/router.selectors";
-import { MatSnackBar } from "@angular/material/snack-bar";
+import {Injectable} from '@angular/core';
+import {Actions, concatLatestFrom, createEffect, ofType} from '@ngrx/effects';
+import {ApiService} from "../../core/services/api.service";
+import {MoviesApiActions} from "./movies.actions";
+import {catchError, concatMap, forkJoin, map, mergeMap, of, switchMap, tap} from "rxjs";
+import {Store} from "@ngrx/store";
+import {selectRouteParams} from "../../store/router.selectors";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 
 @Injectable()

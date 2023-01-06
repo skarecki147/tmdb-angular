@@ -1,14 +1,15 @@
 <div id="movies-list-container">
-  <div class="sort-header">
-    <mat-form-field appearance="fill">
+  <div class="sort-header wide-container">
+    <mat-form-field appearance="outline">
       <mat-label tabindex="0">Sort option</mat-label>
       <mat-select (selectionChange)="sortOptionChange($event)" [value]="sortDefaultOption">
-        <mat-option tabindex="0" *ngFor="let option of sortOptions" [value]="option.value">{{ option.name }}</mat-option>
+        <mat-option *ngFor="let option of sortOptions" [value]="option.value"
+                    tabindex="0">{{ option.name }}</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
 
-  <div class="movies-list">
+  <div class="movies-list wide-container">
     <ng-container *ngIf="genreNames$ | async as genreNames">
       <app-movie-card *ngFor="let movie of movies$ | async"
                       [genreNames]="genreNames"

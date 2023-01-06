@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Store } from "@ngrx/store";
-import { AppActions } from "./store/app.actions";
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {Store} from "@ngrx/store";
+import {AppActions} from "./store/app.actions";
 
 @Component({
   selector: 'app-root',
