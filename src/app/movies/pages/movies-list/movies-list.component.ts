@@ -25,7 +25,7 @@ export class MoviesListComponent {
   }
 
   sortOptionChange({value}: MatSelectChange) {
-    const compareFn = this.sortOptions.find(option => option.value == value)!.compareFn
+    const compareFn = this.sortOptions.find(option => option.value == value)?.compareFn ?? this.sortOptions[0].compareFn
     this._store.dispatch(MoviesActions.changeSortOption({compareFn}))
   }
 }
