@@ -3,6 +3,7 @@ import { ProductionCompanyModel } from "../../shared/models/production-company.m
 import { ProductionCountryModel } from "../../shared/models/production-country.model";
 import { GenreModel } from "../../shared/models/genre.model";
 import { CollectionModel } from "./collection.model";
+import { MovieModel } from "./movie.model";
 
 export interface MovieDetailsModel {
   adult: boolean,
@@ -29,5 +30,6 @@ export interface MovieDetailsModel {
   title: string,
   video: boolean,
   vote_average: number,
-  vote_count: number
+  vote_count: number,
+  related_movies?: MovieModel[]
 }

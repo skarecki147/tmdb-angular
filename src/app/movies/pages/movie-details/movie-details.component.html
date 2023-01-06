@@ -34,7 +34,8 @@
 
   <section>
     <div class="movie-basic-info container">
-      <img tabindex="0" *ngIf="details.poster_path" [src]="getImageUrl(details.poster_path)" [alt]="details.title + ' poster image.'">
+      <img *ngIf="details.poster_path" [alt]="details.title + ' poster image.'" [src]="getImageUrl(details.poster_path)"
+           tabindex="0">
 
       <div>
         <span [attr.aria-label]="'Overview: ' + details.overview" class="overview" tabindex="0">
@@ -77,9 +78,8 @@
 
     <div class="producers container">
       <h2 tabindex="0">Produced by:</h2>
-      <div class="production-companies">
-        <div *ngFor="let productionCompany of details.production_companies; last as last" aria-label="Producers list:"
-             class="production-company">
+      <div class="tiles">
+        <div *ngFor="let productionCompany of details.production_companies; last as last" class="tile">
           <img *ngIf="productionCompany.logo_path" [alt]="productionCompany.name + ' logo'"
                [src]="getImageUrl(productionCompany.logo_path!)"
                tabindex="0">
@@ -87,6 +87,21 @@
             [attr.aria-label]="last ? 'Last of producers: ' + productionCompany.name + 'from ' + productionCompany.origin_country :
           productionCompany.name + 'from ' + productionCompany.origin_country"
             tabindex="0">{{productionCompany.name}} [{{productionCompany.origin_country}}]</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="related container">
+      <h2 tabindex="0">Related movies:</h2>
+      <div class="tiles">
+        <div *ngFor="let relatedMovie of details.related_movies; last as last" [attr.aria-label]="relatedMovie.title"
+             [routerLink]="'/movies/' + relatedMovie.id" class="tile" role="link">
+          <img *ngIf="relatedMovie.poster_path" [alt]="relatedMovie.title + ' logo'"
+               [src]="getImageUrl(relatedMovie.poster_path!)"
+               tabindex="0">
+          <span>
+            {{relatedMovie.title}}
+          </span>
         </div>
       </div>
     </div>

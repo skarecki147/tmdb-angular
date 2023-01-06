@@ -34,10 +34,10 @@ main.movie-detail {
       }
 
       .back-button {
-        position: absolute;
         left: 0;
-        top: 0;
         margin: 1rem;
+        position: absolute;
+        top: 0;
       }
 
       img {
@@ -136,25 +136,39 @@ main.movie-detail {
 
     }
 
-    .producers {
+    .producers, .related {
       color: $black;
+      margin-top: 2rem;
       text-align: center;
 
-      .production-companies {
+      .tiles {
         @include flex(row, flex-end, space-between);
         flex-wrap: wrap;
         gap: 40px;
 
-        .production-company {
-          @include flex(column, center, space-beetwen);
+        .tile {
+          @include flex(column, center, space-between);
           flex: 1;
           gap: 10px;
           min-width: 200px;
 
           img {
-            max-width: 50%;
+            max-width: 200px;
           }
         }
+      }
+    }
+
+    .related {
+      .tile {
+        cursor: pointer;
+
+        &:hover {
+          img {
+            box-shadow: 0 0 4px 4px;
+          }
+        }
+
       }
     }
   }
